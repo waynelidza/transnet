@@ -75,12 +75,7 @@ export class MenuPage {
      }else{
       this.Admin.wifi= false;
      }
-     
-      this.Admin.make=""
-
-      this.Admin.model=""
-  
-      this.Admin.registration=""
+    
     
 }
 
