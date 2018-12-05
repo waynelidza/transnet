@@ -2,8 +2,8 @@ page-menu {
   #body {
     //background-image: url("../../assets/imgs/wall.jpg");
     //background-image: url("…/assets/imgs/wall.jpg");
-    background-image: url(../assets/imgs/tnet.jpg);
-
+    //background-image: url(../assets/imgs/tnet.jpg);
+    background-color: #D5D2D2;
     background-size: cover;
     background-repeat:no-repeat;
 
@@ -15,12 +15,15 @@ page-menu {
     font-size: 50px;
 
   }
-
+hd{
+  font-size: 50px;
+  color: #9ACD32;
+}
   
-  .image {
+  #image {
   
      // border-radius: 50%;
-   
+     background-image: url(../assets/imgs/hala.png);
   }
   
   .circle-pic{

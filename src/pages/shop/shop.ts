@@ -207,7 +207,7 @@ export class ShopPage {
           text: 'Yes',
           handler: data => {
 
-           this.deleteNews(id)
+          
           }
         }
       ]
@@ -215,35 +215,7 @@ export class ShopPage {
     prompt.present();
   }
 
-deleteNews(id:string){
 
-  let loader = this.loadingCtrl.create({
-    content: 'sending .....',
-  });
-  this.alertmessage = "Successfuly deleted";
-
-  loader.present().then(() => {
-    this.service.DeleteNews(id)
-      .subscribe(
-        data => {
-
-          this.toastmeassage = 'Deleted'
-          this.presentToast();
-          this.ionViewDidEnter();
-        },
-        error => {
-          if(error.status===409){
-
-          }
-          if (error.status === 0) {
-            this.alertmessage = "not internet connection or server is down";
-            this.showAlert();
-          }
-
-        });
-    loader.dismiss();
-  });
-}
   uploadFile() {
     let loader = this.loadingCtrl.create({
       content: "Uploading..."

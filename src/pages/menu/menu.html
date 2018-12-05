@@ -14,17 +14,15 @@
   <br>
   <br>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <img  id="img" class="circle-pic"src="../assets/imgs/hala.png" alt="Avatar" style="width:200px">
+  <img  id="img" class="circle-pic"src="./assets/imgs/hala.png" alt="Avatar" style="width:200px">
+      <p class ="hd" style="color: #9ACD32;">Register with Transnet Visitor Management App</p>
+      <br>
     <ion-list>
-      <form #loginForm="ngForm" (ngSubmit)="registerMe()" >
+      <div *ngIf="!upload">
           <ion-item>
               <ion-label>Tittle</ion-label>
               <ion-select  name="title"[(ngModel)]="Admin.title">
-                <ion-option value="Mr">Mr</ion-option>
+                <ion-option value="Mr">Mr</ion-option>/
                 <ion-option value="Mrs">Mrs</ion-option>
                 <ion-option value="Miss">Miss</ion-option>
               </ion-select>
@@ -53,19 +51,19 @@
           </ion-item>
           <ion-item>
               <ion-label>Mobile No</ion-label>
-              <ion-input type="text" [(ngModel)]="Admin.phonenumber"name="password"></ion-input>
+              <ion-input type="number" maxlength="10" [(ngModel)]="Admin.phonenumber"name="password"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label>Email</ion-label>
-                <ion-input type="text" [(ngModel)]="Admin.email"name="password"></ion-input>
+                <ion-input type="email" [(ngModel)]="Admin.email"name="password"></ion-input>
               </ion-item>
               <ion-item>
                   <ion-label>Required</ion-label>
-                  <ion-select (ionChange)="show()"[(ngModel)]="Admin.data" name="options" multiple="true" cancelText="Cancel" okText="Ok">
+                  <ion-select [(ngModel)]="data" name="options"(ionChange)="show($event)" multiple="true" cancelText="Cancel" okText="Ok">
               
                     <ion-option name="options" value="i">Wifi</ion-option>
-                    <ion-option  name="options"value="p">Parking</ion-option>
-                    <ion-option name="options"value="wl">Wheel Chair Needs</ion-option>
+                    <ion-option  name="options"value="p" >Parking</ion-option>
+                    <ion-option name="options"value="w">Wheel Chair Needs</ion-option>
                   </ion-select>
                 </ion-item>
                 <div *ngIf="showme">
@@ -85,18 +83,39 @@
                       </ion-item>
                     </div>
                     <ion-item>
-                        <ion-label>Comapny</ion-label>
+                        <ion-label>Company</ion-label>
                         <ion-input type="text" [(ngModel)]="Admin.company"name="password"></ion-input>
                       </ion-item>
                 
                   <br>
                   <br>
-                    <button ion-button color="danger" width="50px">Register</button>
-                    <button ion-button color="danger" width="50px">Cancel</button>
-                  
-      </form>
+                    <button ion-button  (click)="registerMe()"color="danger" width="50px">Register</button>
+                    <button ion-button  (click)="Clearme()"color="danger" width="50px">Reset</button>
+                  </div>
+                    <div *ngIf="upload">
+                      <ion-item>
+                        <ion-row>
+                          <ion-col col-6>
+                            <button ion-button color="danger" type="button" full round large (click)="takePhoto()">
+                              <ion-icon name="camera"></ion-icon>
+                            </button>
+                          </ion-col>
+                          <ion-col col-6>
+                            <button ion-button color="secondary" type="button" full round large (click)="selectPhoto()">
+                              <ion-icon name="image"></ion-icon>
+                            </button>
+                          </ion-col>
+                        </ion-row>
+                      </ion-item>
+                      <ion-item *ngIf="error">
+                        <strong>{{error}}</strong>
+                      </ion-item>
+                      <ion-item>
+                        <img *ngIf="myPhoto" class="img-responsive" [src]="myPhoto"/>
+                      </ion-item>
+                  </div>
 
     </ion-list>
-  
+   
 
 </ion-content>

@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map'
 */
 @Injectable()
 export class SystemserviceProvider {
-Localhost = "http://104.251.219.251:8090/api";
+Localhost = "http://104.251.219.251:9090/api";
 // dev ='http://ec2-34-240-133-21.eu-west-1.compute.amazonaws.com:3000/';
   constructor(public http: HttpClient,public alertCtrl: AlertController) {
 
@@ -107,7 +107,7 @@ Localhost = "http://104.251.219.251:8090/api";
 
 
   Register(make:string,model:string,reg:string,comp:string,email:string,id:string,idtype:string,licenseNumber:string,name:string,parking:boolean,passport:string,
-    number:string,surname:string,title:string,wheelChair:boolean,wifi:boolean) {
+    number:string, photo:string,surname:string,title:string,wheelChair:boolean,wifi:boolean) {
   
     return this.http.post<any>(this.Localhost+'/register', { 
       visitorDTO: {
@@ -135,6 +135,7 @@ Localhost = "http://104.251.219.251:8090/api";
             number: number
           }
         ],
+        photoLocation: photo,
         surname: surname,
         title: title,
         wheelChair: wheelChair,
@@ -223,6 +224,9 @@ return user;
   public handleError(error: Response) {
 
   }
+
+
+
   approve(userId: string,accountStatus:string) {
     return this.http.put<any>(this.Localhost+`/usersEdit/${userId}`, {accountStatus:accountStatus})
       .map(user => {
@@ -261,6 +265,7 @@ return user;
         return user;
       });
   }
+  
   getallUsers() {
     return this.http.get<any>(this.Localhost+'/ivy/users',)
       .map(user => {
@@ -275,6 +280,7 @@ return user;
 
 
   }
+
 
 
 

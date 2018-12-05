@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AlertController, LoadingController, NavController, ToastController} from 'ionic-angular';
 import {SystemserviceProvider} from "../../providers/systemservice/systemservice";
+import { FTP } from '@ionic-native/ftp';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,7 @@ export class HomePage {
   toastmeassage="";
   orders:any;
   allOrders;any;
-  constructor(public navCtrl: NavController,public service:SystemserviceProvider,public alertCtrl: AlertController,public loadingCtrl: LoadingController,private toastCtrl: ToastController) {
+  constructor( public navCtrl: NavController,public service:SystemserviceProvider,public alertCtrl: AlertController,public loadingCtrl: LoadingController,private toastCtrl: ToastController) {
 
   }
 

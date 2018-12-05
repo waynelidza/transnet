@@ -23,75 +23,7 @@ export class AboutPage {
   }
 
   ionViewDidEnter(){
-    this.getall();
-  }
-  getall() {
-    this.service.getallUsers()
-      .subscribe(
-        data => {
-          console.log(data.length);
-          this.usersData = data
-
-
-
-
-
-        },
-        error => {
-
-
-        });
+   
   }
 
-
-
-  selectedUser(userID){
-
-    this.presentToast();
-    let loader = this.loadingCtrl.create({
-      content: 'sending .....',
-    });
-    this.alertmessage = "Successfuly approved";
-
-    this.service.approve(userID,this.accountStatus)
-      .subscribe(
-        data => {
-        if(data.message=='activated'){
-          this.toastmeassage ='approved'
-          this.presentToast();
-          this.ionViewDidEnter();
-          this.getall();
-        }
-
-        },
-        error => {
-        if(error==201){
-
-        }
-
-        });
-  }
-
-  showAlert() {
-
-    let alert = this.alertCtrl.create({
-      subTitle: this.alertmessage,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-  presentToast() {
-    console.log('ALERT');
-    let toast = this.toastCtrl.create({
-      message: this.toastmeassage,
-      duration: 1000,
-      position: 'top'
-    });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
-    toast.present();
-  }
 }

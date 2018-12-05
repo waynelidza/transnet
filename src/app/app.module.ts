@@ -18,6 +18,7 @@ import {ShopPageModule} from "../pages/shop/shop.module";
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
+import { FTP } from '@ionic-native/ftp';
 
 @NgModule({
   declarations: [
@@ -46,15 +47,16 @@ import { Camera } from '@ionic-native/camera';
   providers: [
     StatusBar,
 
-    FCM,
+    
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SystemserviceProvider,
     FileTransfer,
     FileTransferObject,
     File,
-    Camera
-
+    Camera,
+    FCM,
+    FTP
   ]
 })
 export class AppModule {}
